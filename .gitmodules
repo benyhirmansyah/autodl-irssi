@@ -1,0 +1,3 @@
+[submodule "autodl-irssi-community"]
+	path = autodl-irssi-community
+	url = https://github.com/autodl-community/autodl-irssi.git
