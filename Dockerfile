@@ -1,23 +1,28 @@
 FROM irssi
-MAINTAINER thomaswelton
 
 USER root
 RUN apt-get update
 RUN apt-get install -y build-essential
 
-# Net::SSLeay dependency
-RUN apt-get install -y libssl-dev
-# XML::LibXML dependency
-RUN apt-get install -y libxml2-dev
+# Install dependencies and troubleshooting tools
+RUN apt-get install -y \
+  libssl-dev \
+  libxml2-dev \
+  less \
+  vim-tiny \
+  procps \
+  net-tools
 
+# Install Perl libraries
 RUN curl -L http://cpanmin.us | perl - App::cpanminus
 RUN cpanm Archive::Zip Net::SSLeay HTML::Entities XML::LibXML Digest::SHA JSON JSON::XS
 
-USER user
+USER autodl
 
-ADD install.sh /home/user/install.sh
-ADD autodl-irssi-community /home/user/autodl-irssi-community/
+ADD install.sh /home/autodl/install.sh
+ADD autodl-irssi-community /home/autodl/autodl-irssi-community/
+ADD autodl-trackers /home/autodl/autodl-irssi-community/AutodlIrssi/
 
-VOLUME /home/user/watch
+VOLUME /home/autodl/watch
 
-CMD ["/home/user/install.sh"]
+CMD ["/home/autodl/install.sh"]
