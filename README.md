@@ -3,6 +3,9 @@
 Container definition for the Autodl-irssi. This runs only the "backend" part of the autodl setup i.e. irssi client + it's autodl plugin. If you also want to run the rutorrent plugin, you need to run it separately. There's an awesome container for rtorrent/rutorrent by _crazy-max_:
 https://github.com/crazy-max/docker-rtorrent-rutorrent
 
+Update: Actually there's a small issue with crazy-max's container. It's missing php-posix library, which the autoddl-irssi rutorrent plugin requires. You can temporary use my build if you want, which is exactly the same + php-posix library on top:
+https://hub.docker.com/repository/docker/darthpyranus/rtorrent-rutorrent
+
 This container is a fork of https://github.com/thomaswelton/autodl-irssi with slight additions:
 - Autodl-irssi and it's tracker files addes as submodules for easy upgrade
 - Added a couple of basic tools for convenient troubleshooting: ps, netstat, vim, less
