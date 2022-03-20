@@ -11,7 +11,7 @@ RUN apt-get install -y \
   libxml2-dev \
   curl \
   less \
-  vim-tiny \
+  nano \
   procps \
   net-tools
 
